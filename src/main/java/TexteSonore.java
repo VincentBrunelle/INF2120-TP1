@@ -1,3 +1,5 @@
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,6 +20,9 @@ public class TexteSonore extends ArrayList< SyllabeFrancais > {
      * Le caractère utilisé pour séparé les syllabes lors de la lecture et de l'écriture.
      */
     public static final String SEPARATEUR = ".";
+
+
+    public static final int DISTANCE_MINIMALE = 43;
 
     /**
      * Construit une suite de syllabe vide.
@@ -77,7 +82,7 @@ public class TexteSonore extends ArrayList< SyllabeFrancais > {
     }
 
     public TexteSonore reduire () {
-        for (int i = 0; i < this.size() - 1 ; i++) {
+        for (int i = 0; i < this.size(); i++) {
             for (int j = i +1; j < this.size(); j++) {
                 if (this.get(i).equals(this.get(j))){
                     this.get(i).setCompteur(this.get(i).getCompteur() + 1);
@@ -88,4 +93,58 @@ public class TexteSonore extends ArrayList< SyllabeFrancais > {
         return this;
     }
 
+    public int calculerNombreDeSons () {
+        int nombreDeSons = 0;
+        ArrayList<SyllabeFrancais> nombreSyllabeDifferentes = new ArrayList<>();
+        for (int i = 0; i < size(); i++) {
+            if (!nombreSyllabeDifferentes.contains(get(i))) {
+                nombreSyllabeDifferentes.add(get(i));
+            }
+        }
+return nombreSyllabeDifferentes.size();
+    }
+
+    public SyllabeFrancais[] trouverSyllabeForteFaible () {
+        SyllabeFrancais [] syllabes = new SyllabeFrancais[2];
+        int distance = DISTANCE_MINIMALE;
+        syllabes[0] = get(0);
+        syllabes[1] = get(1);
+        for (int i = 0; i < size(); i++) {
+            for (int j = i + 1; j < size(); j++) {
+                if (!(get(i).equals(get(j))) && get(i).calculerDistanceSyllabe(get(j)) < distance) {
+                    distance = get(i).calculerDistanceSyllabe(get(j));
+                    syllabes[0] = get(i);
+                    syllabes[1] = get(j);
+                }
+            }
+
+        }
+        return syllabes;
+    }
+
+    public SyllabeFrancais[] trierSyllabeParOccurence (SyllabeFrancais [] syllabes) {
+        int compteSyllabe0 = 0;
+        int compteSyllabe1 = 0;
+        for (int i = 0; i < size(); i++) {
+            if (get(i).equals(syllabes[0])) {
+                compteSyllabe0++;
+            } else if (get(i).equals(syllabes[1])) {
+                compteSyllabe1++;
+            }
+        }
+        if (compteSyllabe0 < compteSyllabe1) {
+            SyllabeFrancais syllabeTemp = syllabes[0];
+            syllabes[0] = syllabes[1];
+            syllabes[1] = syllabeTemp;
+        }
+            return syllabes;
+    }
+
+    public void remplacerSyllabe (SyllabeFrancais [] syllabes) {
+        for (int i= 0; i < size() ; i++) {
+            if (get(i).equals(syllabes[0])) {
+                set(i, syllabes[1]);
+            }
+        }
+    }
 }

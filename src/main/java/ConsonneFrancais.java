@@ -101,9 +101,10 @@ public class ConsonneFrancais {
         if(consonne2 == null || consonne.consonne2 ==  null) {
             distance = 6;
         } else {
-            distance += consonne1.calculerDistanceApiConsonne(consonne.consonne1);
+            distance = consonne2.calculerDistanceApiConsonne(consonne.consonne2);
         }
-        distance += consonne2.calculerDistanceApiConsonne(consonne.consonne2);
+
+        distance += consonne1.calculerDistanceApiConsonne(consonne.consonne1);
         return distance;
     }
 }

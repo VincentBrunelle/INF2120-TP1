@@ -66,37 +66,14 @@ public class Principal {
 
         TexteSonore texteSonore = new TexteSonore( nomFichier );
 
-        for (int i = 0; i < texteSonore.size() - 1 ; i++) {
-            for (int j = i +1; j < texteSonore.size(); j++) {
-                if (texteSonore.get(i).equals(texteSonore.get(j))){
-                    texteSonore.get(i).setCompteur(texteSonore.get(i).getCompteur() + 1);
-                    texteSonore.remove(j);
-                }
-            }
+        while (texteSonore.calculerNombreDeSons() > nombreDeSyllabes) {
+            texteSonore.remplacerSyllabe(texteSonore.trierSyllabeParOccurence(texteSonore.trouverSyllabeForteFaible()));
+            System.out.println(texteSonore.calculerNombreDeSons());
+            System.out.println(texteSonore);
         }
-
-        /*---------------------------------------------------------------------------------------------------*/
-
-        SyllabeFrancais s = texteSonore.get(0);
-        for (int i = 0; i < texteSonore.size(); i++) {
-            if (s.equals(texteSonore.get(i))){
-                System.out.println("oui!");
-            } else {
-                System.out.println("non");
-            }
-        }
-
-
-
-        /*---------------------------------------------------------------------------------------------------*/
-        // placer vos actions ici :
-
 
         // cette partie du code affiche les résultats, modifier au besoin.
         System.out.println( texteSonore );
-        for (int i = 0; i < texteSonore.size(); i++) {
-            System.out.println(texteSonore.get(i).getCompteur());
-        }
         System.out.println( nombreDeSyllabes );
     }
 }

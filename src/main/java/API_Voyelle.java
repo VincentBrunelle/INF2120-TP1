@@ -177,7 +177,7 @@ public enum API_Voyelle {
 
     public int calculerDistanceArriere(API_Voyelle voyelle) {
         int distance = 1;
-        if (this.estArriere() == voyelle.estArriere()) {
+        if (estArriere() == voyelle.estArriere()) {
             distance = 0;
         }
         return distance;
@@ -185,7 +185,7 @@ public enum API_Voyelle {
 
     public int calculerDistanceHaut(API_Voyelle voyelle) {
         int distance = 1;
-        if (this.estHaut() == voyelle.estHaut()) {
+        if (estHaut() == voyelle.estHaut()) {
             distance = 0;
         }
         return distance;
@@ -193,7 +193,7 @@ public enum API_Voyelle {
 
     public int calculerDistanceArrondi(API_Voyelle voyelle) {
         int distance = 1;
-        if (this.estArrondi() == voyelle.estArrondi()) {
+        if (estArrondi() == voyelle.estArrondi()) {
             distance = 0;
         }
         return distance;
@@ -201,15 +201,15 @@ public enum API_Voyelle {
 
     public int calculerDistanceOuverte(API_Voyelle voyelle) {
         int distance = 1;
-        if (this.estOuverte() == voyelle.estOuverte()) {
+        if (estOuverte() == voyelle.estOuverte()) {
             distance = 0;
         }
         return distance;
     }
 
     public int calculerDistanceApiVoyelle (API_Voyelle voyelle) {
-        return this.calculerDistanceArriere(voyelle) +
-                this.calculerDistanceHaut(voyelle) +
+        return calculerDistanceArriere(voyelle) +
+                calculerDistanceHaut(voyelle) +
                 calculerDistanceArrondi(voyelle) +
                 calculerDistanceOuverte(voyelle);
     }

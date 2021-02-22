@@ -341,7 +341,7 @@ public enum API_Consonne {
 
     public int calculerDistanceVocalique (API_Consonne consonne) {
         int distance = 1;
-        if (this.estVocalique() == consonne.estVocalique()) {
+        if (estVocalique() == consonne.estVocalique()) {
             distance = 0;
         };
         return distance;
@@ -349,7 +349,7 @@ public enum API_Consonne {
 
     public int calculerDistanceNasal (API_Consonne consonne) {
         int distance = 1;
-        if (this.estVocalique() == consonne.estVocalique()) {
+        if (estVocalique() == consonne.estVocalique()) {
             distance = 0;
         };
         return distance;
@@ -357,7 +357,7 @@ public enum API_Consonne {
 
     public int calculerDistanceVoise (API_Consonne consonne) {
         int distance = 1;
-        if (this.estVoise() == consonne.estVoise()) {
+        if (estVoise() == consonne.estVoise()) {
             distance = 0;
         };
         return distance;
@@ -365,7 +365,7 @@ public enum API_Consonne {
 
     public int calculerDistanceContinu (API_Consonne consonne) {
         int distance = 1;
-        if (this.estContinu() == consonne.estContinu()) {
+        if (estContinu() == consonne.estContinu()) {
             distance = 0;
         };
         return distance;
@@ -373,7 +373,7 @@ public enum API_Consonne {
 
     public int calculerDistanceCompact (API_Consonne consonne) {
         int distance = 1;
-        if (this.estCompact() == consonne.estCompact()) {
+        if (estCompact() == consonne.estCompact()) {
             distance = 0;
         };
         return distance;
@@ -381,18 +381,18 @@ public enum API_Consonne {
 
     public int calculerDistanceAigu (API_Consonne consonne) {
         int distance = 1;
-        if (this.estAigu() == consonne.estAigu()) {
+        if (estAigu() == consonne.estAigu()) {
             distance = 0;
         };
         return distance;
     }
 
     public int calculerDistanceApiConsonne (API_Consonne consonne) {
-        return this.calculerDistanceVocalique(consonne) +
-                this.calculerDistanceNasal(consonne) +
-                this.calculerDistanceVoise(consonne) +
-                this.calculerDistanceContinu(consonne) +
-                this.calculerDistanceCompact(consonne) +
-                this.calculerDistanceAigu(consonne);
+        return calculerDistanceVocalique(consonne) +
+                calculerDistanceNasal(consonne) +
+                calculerDistanceVoise(consonne) +
+                calculerDistanceContinu(consonne) +
+                calculerDistanceCompact(consonne) +
+                calculerDistanceAigu(consonne);
     }
 }

@@ -147,5 +147,35 @@ public class SyllabeFrancais {
         this.compteur = compteur;
     }
 
+    public int calculerDistanceAttaque (SyllabeFrancais syllabe) {
+        int distance = 0;
+        if (attaque == null ^ syllabe.attaque == null) {
+            distance = 12;
+        } else if (attaque != null && syllabe.attaque != null) {
+            distance = attaque.calculerDistanceConsonne(syllabe.attaque);
+        }
+        return distance;
+    }
 
+    public int calculerDistanceNoyau (SyllabeFrancais syllabe) {
+        return noyau.calculerDistanceVoyelle(syllabe.noyau);
+    }
+
+    public int calculerDistanceCoda (SyllabeFrancais syllabe) {
+        int distance = 0;
+        if (coda == null ^ syllabe.coda == null) {
+            distance = 12;
+        } else if (coda != null && syllabe.coda != null) {
+            distance = coda.calculerDistanceConsonne(syllabe.coda);
+        }
+        return distance;
+    }
+
+    public int calculerDistanceSyllabe (SyllabeFrancais syllabe) {
+        int distance = 0;
+        distance = calculerDistanceAttaque(syllabe) +
+                calculerDistanceNoyau(syllabe) +
+                calculerDistanceCoda(syllabe);
+        return distance;
+    }
 }

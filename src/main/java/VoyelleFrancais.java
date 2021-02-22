@@ -168,11 +168,13 @@ public class VoyelleFrancais {
         if(semiVoyelle == null || voyelle.semiVoyelle ==  null) {
             distance = 4;
         } else {
-            distance += this.voyelle.calculerDistanceApiVoyelle(voyelle.voyelle);
+            distance = semiVoyelle.calculerDistanceApiVoyelle(voyelle.semiVoyelle);
         }
-        distance += semiVoyelle.calculerDistanceApiVoyelle(voyelle.semiVoyelle);
-        if(estNasal() == voyelle.estNasal())
+        distance += this.voyelle.calculerDistanceApiVoyelle(voyelle.voyelle);
+        if(estNasal() == voyelle.estNasal()) {
             distance++;
+        }
+        distance *=2;
         return distance;
     }
 }
