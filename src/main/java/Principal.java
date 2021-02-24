@@ -68,8 +68,6 @@ public class Principal {
 
         while (texteSonore.calculerNombreDeSons() > nombreDeSyllabes) {
             texteSonore.remplacerSyllabe(texteSonore.trierSyllabeParOccurence(texteSonore.trouverSyllabeForteFaible()));
-            System.out.println(texteSonore.calculerNombreDeSons());
-            System.out.println(texteSonore);
         }
 
         // cette partie du code affiche les résultats, modifier au besoin.

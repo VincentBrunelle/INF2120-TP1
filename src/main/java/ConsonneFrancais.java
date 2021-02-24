@@ -88,6 +88,12 @@ public class ConsonneFrancais {
         return "" + consonne1 + ( null == consonne2 ? "" : consonne2 );
     }
 
+
+    /**
+     * Vérifie si deux instance ConsonneFrancais sont égales.
+     * @param o l'instance à comparer.
+     * @return true si les deux instances sont égales.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,14 +102,20 @@ public class ConsonneFrancais {
         return consonne1 == that.consonne1 && consonne2 == that.consonne2;
     }
 
+
+    /**
+     * Calcule la distance entre deux groupes de consonnes.
+     * @param consonne le groupe de consonnes à comparer.
+     * @return la distance entre les deux groupes de consonnes.
+     */
     public int calculerDistanceConsonne (ConsonneFrancais consonne) {
         int distance = 0;
-        if(consonne2 == null || consonne.consonne2 ==  null) {
+        if((consonne2 == null && consonne.consonne2 !=  null) || (consonne2 != null && consonne.consonne2 ==  null)) {
             distance = 6;
+        } else if (consonne2 == null && consonne.consonne2 ==  null) {
         } else {
             distance = consonne2.calculerDistanceApiConsonne(consonne.consonne2);
         }
-
         distance += consonne1.calculerDistanceApiConsonne(consonne.consonne1);
         return distance;
     }

@@ -339,6 +339,12 @@ public enum API_Consonne {
         return Character.toString(codePoint);
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique vocalique.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceVocalique (API_Consonne consonne) {
         int distance = 1;
         if (estVocalique() == consonne.estVocalique()) {
@@ -347,14 +353,26 @@ public enum API_Consonne {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique nasale.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceNasal (API_Consonne consonne) {
         int distance = 1;
-        if (estVocalique() == consonne.estVocalique()) {
+        if (estNasal() == consonne.estNasal()) {
             distance = 0;
         };
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique voisée.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceVoise (API_Consonne consonne) {
         int distance = 1;
         if (estVoise() == consonne.estVoise()) {
@@ -363,6 +381,12 @@ public enum API_Consonne {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique continue.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceContinu (API_Consonne consonne) {
         int distance = 1;
         if (estContinu() == consonne.estContinu()) {
@@ -371,6 +395,12 @@ public enum API_Consonne {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique compacte.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceCompact (API_Consonne consonne) {
         int distance = 1;
         if (estCompact() == consonne.estCompact()) {
@@ -379,6 +409,12 @@ public enum API_Consonne {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de consonne ont la même caractéristique aiguë.
+     * @param consonne le phonème de consonne à comparer.
+     * @return 0 si les deux phonèmes de consonne ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceAigu (API_Consonne consonne) {
         int distance = 1;
         if (estAigu() == consonne.estAigu()) {
@@ -387,6 +423,12 @@ public enum API_Consonne {
         return distance;
     }
 
+
+    /**
+     * Calcule la distance entre deux phonèmes de consonne.
+     * @param consonne le phonème de consonne à comparer.
+     * @return la distance entre les deux phonèmes de consonne.
+     */
     public int calculerDistanceApiConsonne (API_Consonne consonne) {
         return calculerDistanceVocalique(consonne) +
                 calculerDistanceNasal(consonne) +

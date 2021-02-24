@@ -155,6 +155,11 @@ public class VoyelleFrancais {
                 ;
     }
 
+    /**
+     * Vérifie si deux instance VoyelleFrancais sont égales.
+     * @param o l'instance à comparer.
+     * @return true si les deux instances sont égales.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -163,16 +168,22 @@ public class VoyelleFrancais {
         return nasal == that.nasal && semiVoyelle == that.semiVoyelle && voyelle == that.voyelle;
     }
 
+    /**
+     * Calcule la distance entre deux groupes de voyelles.
+     * @param voyelle le groupe de voyelles à comparer.
+     * @return la distance entre les deux groupes de voyelles.
+     */
     public int calculerDistanceVoyelle (VoyelleFrancais voyelle) {
         int distance = 0;
-        if(semiVoyelle == null || voyelle.semiVoyelle ==  null) {
+        if((semiVoyelle == null && voyelle.semiVoyelle !=  null) || (semiVoyelle != null && voyelle.semiVoyelle ==  null)) {
             distance = 4;
+        } else if (semiVoyelle == null && voyelle.semiVoyelle ==  null) {
         } else {
             distance = semiVoyelle.calculerDistanceApiVoyelle(voyelle.semiVoyelle);
         }
         distance += this.voyelle.calculerDistanceApiVoyelle(voyelle.voyelle);
-        if(estNasal() == voyelle.estNasal()) {
-            distance++;
+        if(estNasal() != this.estNasal()) {
+            distance = distance + 1;
         }
         distance *=2;
         return distance;

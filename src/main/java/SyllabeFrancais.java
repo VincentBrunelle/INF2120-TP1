@@ -31,6 +31,9 @@ public class SyllabeFrancais {
      */
     protected ConsonneFrancais coda = null;
 
+    /**
+     * Le nombre d'occurence d'un élément SyllabeFrancais.
+     */
     protected int compteur = 1;
 
 
@@ -114,6 +117,12 @@ public class SyllabeFrancais {
         return new SyllabeFrancais( attaque, noyau, coda );
     }
 
+
+    /**
+     * Vérifie si deux instance SyllabeFrancais sont égales.
+     * @param o l'instance à comparer.
+     * @return true si les deux instances sont égales.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,10 +131,6 @@ public class SyllabeFrancais {
         return Objects.equals(attaque, that.attaque) && Objects.equals(noyau, that.noyau) && Objects.equals(coda, that.coda);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(attaque, noyau, coda);
-    }
 
     /**
      * retourne une chaîne de caractère composée des phonèmes de la syllabe.
@@ -139,38 +144,72 @@ public class SyllabeFrancais {
                 + ( null == coda ? "" : coda );
     }
 
+    /**
+     * retourne le nombre d'occurence d'un élément SyllabeFrancais.
+     * @return le nombre d'occurence.
+     */
     public int getCompteur() {
         return compteur;
     }
 
+    /**
+     * modifie le nombre d'occurence d'un élément SyllabeFrancais.
+     * @param compteur la valeur a affecter.
+     */
     public void setCompteur(int compteur) {
         this.compteur = compteur;
     }
 
+
+    /**
+     * Calcule la distance entre les attaques de deux SyllabeFrancais.
+     * @param syllabe le SyllabeFrancias à comparer.
+     * @return la distance entre les noyaux des deux instances.
+     */
     public int calculerDistanceAttaque (SyllabeFrancais syllabe) {
         int distance = 0;
-        if (attaque == null ^ syllabe.attaque == null) {
+        if ((attaque == null ^ syllabe.attaque == null)) {
             distance = 12;
-        } else if (attaque != null && syllabe.attaque != null) {
+        } else if (attaque == null && syllabe.attaque == null) {
+        } else {
             distance = attaque.calculerDistanceConsonne(syllabe.attaque);
         }
         return distance;
     }
 
+
+    /**
+     * Calcule la distance entre les noyaux de deux SyllabeFrancais.
+     * @param syllabe le SyllabeFrancias à comparer.
+     * @return la distance entre les noyaux des deux instances.
+     */
     public int calculerDistanceNoyau (SyllabeFrancais syllabe) {
         return noyau.calculerDistanceVoyelle(syllabe.noyau);
     }
 
+
+    /**
+     * Calcule la distance entre les codas de deux SyllabeFrancais.
+     * @param syllabe le SyllabeFrancias à comparer.
+     * @return la distance entre les codas des deux instances.
+     */
     public int calculerDistanceCoda (SyllabeFrancais syllabe) {
         int distance = 0;
-        if (coda == null ^ syllabe.coda == null) {
+        if ((coda == null ^ syllabe.coda == null)) {
             distance = 12;
-        } else if (coda != null && syllabe.coda != null) {
+        } else if (coda == null && syllabe.coda == null) {
+        } else {
             distance = coda.calculerDistanceConsonne(syllabe.coda);
         }
         return distance;
     }
 
+
+    /**
+     * Calcule la distance entre les deux SyllabeFrancais.
+     * @param syllabe le SyllabeFrancias à comparer.
+     * @return la distance entre les deux instances.
+     */
     public int calculerDistanceSyllabe (SyllabeFrancais syllabe) {
         int distance = 0;
         distance = calculerDistanceAttaque(syllabe) +

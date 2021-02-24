@@ -175,6 +175,12 @@ public enum API_Voyelle {
         return Character.toString(codePoint);
     }
 
+
+    /**
+     * Vérifie deux phonèmes de voyelle ont la même caractéristique arrière.
+     * @param voyelle le phonème de voyelle à comparer.
+     * @return 0 si les deux phonèmes de voyelle ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceArriere(API_Voyelle voyelle) {
         int distance = 1;
         if (estArriere() == voyelle.estArriere()) {
@@ -183,6 +189,12 @@ public enum API_Voyelle {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de voyelle ont la même caractéristique haute.
+     * @param voyelle le phonème de voyelle à comparer.
+     * @return 0 si les deux phonèmes de voyelle ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceHaut(API_Voyelle voyelle) {
         int distance = 1;
         if (estHaut() == voyelle.estHaut()) {
@@ -191,6 +203,12 @@ public enum API_Voyelle {
         return distance;
     }
 
+
+    /**
+     * Vérifie deux phonèmes de voyelle ont la même caractéristique arrondie.
+     * @param voyelle le phonème de voyelle à comparer.
+     * @return 0 si les deux phonèmes de voyelle ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceArrondi(API_Voyelle voyelle) {
         int distance = 1;
         if (estArrondi() == voyelle.estArrondi()) {
@@ -199,6 +217,11 @@ public enum API_Voyelle {
         return distance;
     }
 
+    /**
+     * Vérifie deux phonèmes de voyelle ont la même caractéristique ouverte.
+     * @param voyelle le phonème de voyelle à comparer.
+     * @return 0 si les deux phonèmes de voyelle ont la même caractéristique, sinon retourne 1.
+     */
     public int calculerDistanceOuverte(API_Voyelle voyelle) {
         int distance = 1;
         if (estOuverte() == voyelle.estOuverte()) {
@@ -207,6 +230,12 @@ public enum API_Voyelle {
         return distance;
     }
 
+
+    /**
+     * Calcule la distance entre deux phonèmes de voyelle.
+     * @param voyelle le phonème de voyelle à comparer.
+     * @return la distance entre les deux phonèmes de voyelle.
+     */
     public int calculerDistanceApiVoyelle (API_Voyelle voyelle) {
         return calculerDistanceArriere(voyelle) +
                 calculerDistanceHaut(voyelle) +

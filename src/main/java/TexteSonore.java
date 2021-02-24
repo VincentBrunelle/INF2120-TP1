@@ -81,18 +81,11 @@ public class TexteSonore extends ArrayList< SyllabeFrancais > {
         return stream().map( SyllabeFrancais::toString ).collect( Collectors.joining( SEPARATEUR ) );
     }
 
-    public TexteSonore reduire () {
-        for (int i = 0; i < this.size(); i++) {
-            for (int j = i +1; j < this.size(); j++) {
-                if (this.get(i).equals(this.get(j))){
-                    this.get(i).setCompteur(this.get(i).getCompteur() + 1);
-                    this.remove(j);
-                }
-            }
-        }
-        return this;
-    }
 
+    /**
+     * Calcule le nombre de syllabes différentes dans un TexteSonore.
+     * @return le nombre de syllabes différentes.
+     */
     public int calculerNombreDeSons () {
         int nombreDeSons = 0;
         ArrayList<SyllabeFrancais> nombreSyllabeDifferentes = new ArrayList<>();
@@ -101,9 +94,14 @@ public class TexteSonore extends ArrayList< SyllabeFrancais > {
                 nombreSyllabeDifferentes.add(get(i));
             }
         }
-return nombreSyllabeDifferentes.size();
+    return nombreSyllabeDifferentes.size();
     }
 
+
+    /**
+     * Trouve les deux syllabe ayant la plus petite distance.
+     * @return un tableaux de deux syllabes.
+     */
     public SyllabeFrancais[] trouverSyllabeForteFaible () {
         SyllabeFrancais [] syllabes = new SyllabeFrancais[2];
         int distance = DISTANCE_MINIMALE;
@@ -122,6 +120,11 @@ return nombreSyllabeDifferentes.size();
         return syllabes;
     }
 
+    /**
+     * Calcule les occurence de deux syllables dans un TexteSonore.
+     * @param syllabes les deux syllabe dont on veut calculer les occurences.
+     * @return un tableau de deux syllable, la syllabe 0 est celle ayant le plsu grand nombre d'occurences.
+     */
     public SyllabeFrancais[] trierSyllabeParOccurence (SyllabeFrancais [] syllabes) {
         int compteSyllabe0 = 0;
         int compteSyllabe1 = 0;
@@ -140,10 +143,14 @@ return nombreSyllabeDifferentes.size();
             return syllabes;
     }
 
+    /**
+     * Remplace une syllabe par une autre syllabe.
+     * @param syllabes un tableau de 2 syllabe, la syllabe 1 est remplacé par la syllabe 0.
+     */
     public void remplacerSyllabe (SyllabeFrancais [] syllabes) {
         for (int i= 0; i < size() ; i++) {
-            if (get(i).equals(syllabes[0])) {
-                set(i, syllabes[1]);
+            if (get(i).equals(syllabes[1])) {
+                set(i, syllabes[0]);
             }
         }
     }
